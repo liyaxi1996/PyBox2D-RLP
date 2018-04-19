@@ -83,7 +83,7 @@ class InvertedPendulum(Framework):
         for pendulum in self.pendulum:
             self.world.DestroyBody(pendulum)
 
-    def reset(self):
+    def Reset(self):
         self.DestoryInvertedPendulum()
         self.CreateInvertedPendulum()
     
