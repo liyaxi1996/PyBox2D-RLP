@@ -31,7 +31,7 @@ class Web(Framework):
 
     def __init__(self):
         super(Web, self).__init__()
-
+        self.Print("hashdfasj", (127, 127, 255))
         # The ground
         ground = self.world.CreateBody(
             shapes=b2EdgeShape(vertices=[(-40, 0), (40, 0)])

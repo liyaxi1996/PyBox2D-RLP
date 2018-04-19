@@ -28,7 +28,6 @@ from Box2D import (b2ContactListener, b2DestructionListener, b2DrawExtended)
 from Box2D import (b2Fixture, b2FixtureDef, b2Joint)
 from Box2D import (b2GetPointStates, b2QueryCallback, b2Random)
 from Box2D import (b2_addState, b2_dynamicBody, b2_epsilon, b2_persistState)
-
 from .settings import fwSettings
 
 
@@ -411,6 +410,24 @@ class FrameworkBase(b2ContactListener):
 
         # Do the main physics step
         self.Step(self.settings)
+    
+    def PrintText(self):
+        """
+        The main simulation loop. Don't override this, override Step instead.
+        """
+
+        # Reset the text line to start the text from the top
+        self.textLine = self.TEXTLINE_START
+
+        # Draw the name of the test running
+        self.Print(self.name, (127, 127, 255))
+
+        if self.description:
+            # Draw the name of the test running
+            for s in self.description.split('\n'):
+                self.Print(s, (127, 255, 127))
+
+        # Do the main physics step
 
     def ConvertScreenToWorld(self, x, y):
         """
@@ -510,9 +527,10 @@ def main(test_class):
     test = test_class()
     if fwSettings.onlyInit:
         return
+    print(fwSettings.istrain)
     if fwSettings.istrain:
         test.train()
-    elif:
+    else:
         test.run()
 
 

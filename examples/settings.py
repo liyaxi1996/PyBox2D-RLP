@@ -24,7 +24,7 @@
 class fwSettings(object):
     # The default backend to use in (can be: pyglet, pygame, etc.)
     backend = 'pygame'
-    istrain = True
+    istrain = False
     # Physics options
     hz = 60.0
     velocityIterations = 8

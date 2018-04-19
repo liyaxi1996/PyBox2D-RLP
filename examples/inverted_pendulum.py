@@ -34,7 +34,7 @@ class InvertedPendulum(Framework):
 
         # angle at which this simulation will fail 
         self.theta_threshold_radians = 12 * 3 * pi / 360
-        self.x_threshold = 40
+        self.x_threshold = 50
 
         # The boundaries
         ground = self.world.CreateBody(position=(0, 0), shapes=b2PolygonShape(box=(50, 0.01)),) 
