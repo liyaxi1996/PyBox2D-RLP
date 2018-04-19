@@ -73,6 +73,9 @@ class InvertedPendulum(Framework):
     def Reset(self):
         self.DestoryInvertedPendulum()
         self.CreateInvertedPendulum()
+        state = [self.car.position[0],self.car.linearVelocity[0]]
+        state.extend([f(x) for x in self.pendulum for f in (lambda x:x.angle,lambda x : x.angularVelocity)])
+        return np.array(state)
     
     def Force(self, action):
         force = (self.force_mag if action = 1 else -self.force_mag, 0 )
@@ -101,7 +104,7 @@ class InvertedPendulum(Framework):
             self.reset()
         else:
             reward = 1.0 
-        return np.array(), reward, done, {}
+        return np.array(state), reward, done, {}
 
 if __name__ == "__main__":
     main(InvertedPendulum)

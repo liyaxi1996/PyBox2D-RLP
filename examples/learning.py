@@ -178,7 +178,7 @@ def learn(env,
     act_params = {
         'make_obs_ph': make_obs_ph,
         'q_func': q_func,
-        'num_actions': env.action_space.n,
+        'num_actions': env.action_space,
     }
 
     act = ActWrapper(act, act_params)
@@ -205,7 +205,7 @@ def learn(env,
 
     episode_rewards = [0.0]
     saved_mean_reward = None
-    obs = env.reset()
+    obs = env.Reset()
     reset = True
     with tempfile.TemporaryDirectory() as td:
         model_saved = False
@@ -239,7 +239,7 @@ def learn(env,
 
             episode_rewards[-1] += rew
             if done:
-                obs = env.reset()
+                obs = env.Reset()
                 episode_rewards.append(0.0)
                 reset = True
 

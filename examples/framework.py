@@ -510,7 +510,10 @@ def main(test_class):
     test = test_class()
     if fwSettings.onlyInit:
         return
-    test.run()
+    if fwSettings.istrain:
+        test.train()
+    elif:
+        test.run()
 
 
 if __name__ == '__main__':
