@@ -32,9 +32,22 @@ class InvertedPendulum(Framework):
 
     def __init__(self):
         super(InvertedPendulum, self).__init__()
+        
+        # basic info of the InvertedPendulum world
+        self.world.gravity = (0.0, -9.8)
+        self.num_of_pendulum = 2
+        self.action_space = 2 # left and right 
+        self.force_mag = 10.0
+        self.masscart = 1.0
+        self.masspole = 0.1
+        self.volcart = (3, 2)
+        self.length = 4
+        self.volpole = (0.1, self.length)
+        self.poscart = (0, 2.01)
+
+        # angle at which this simulation will fail 
         self.theta_threshold_radians = 12 * 3 * pi / 360
         self.x_threshold = 40
-        self.world.gravity = (0.0, -9.8)
 
         # The boundaries
         ground = self.world.CreateBody(position=(0, 0), shapes=b2PolygonShape(box=(50, 0.01)),) 
@@ -45,16 +58,16 @@ class InvertedPendulum(Framework):
 
     def CreateInvertedPendulum(self):
         self.car = self.world.CreateDynamicBody(
-            position=(0, 2.01),
-            shapes=b2PolygonShape(box=(3, 2)),
-            shapeFixture=b2FixtureDef(density=9.0),
+            position= self.poscart,
+            shapes=b2PolygonShape(box=self.volcart),
+            shapeFixture=b2FixtureDef(density=self.masscart),
         )
         self.pendulum = []
-        for i in range(2):
+        for i in range(self.num_of_pendulum):
             self.CreatePendulum(i)
 
     def CreatePendulum(self,i):
-        fixtures = b2FixtureDef(shape=b2PolygonShape(box=(0.1, 4)),density=0.1)
+        fixtures = b2FixtureDef(shape=b2PolygonShape(box=self.volpole),density=self.masspole)
         self.pendulum.append(self.world.CreateDynamicBody(fixtures=fixtures,angle = 0,position =  (0,12+8 * i )))  
         # create Joint. i == 0 for the joint beween pendulum and car. others for joints beween pendulums
         self.world.CreateRevoluteJoint(
@@ -73,6 +86,32 @@ class InvertedPendulum(Framework):
     def reset(self):
         self.DestoryInvertedPendulum()
         self.CreateInvertedPendulum()
+    
+    def Force(self, action):
+        force = (self.force_mag if action = 1 else -self.force_mag, 0 )
+        f = self.car.GetWorldVector(localVector = force)
+        p = self.car.GetWorldVector(localPoint=self.poscart)
+        self.car.ApplyForce(f, p, True)
+        self.poscart
+    
+    def Train(self, settings):
+        # TODO 1. use DRL to control our car
+        # TODO 2. use classic control method
+        # TODO Step1 get position get angle
+        # TODO postion - > algorithm (dqn pid) -> +1 -1
+        # if 1
+        action = 
+        self.Force(action)
+
+        Framework.Step(self, settings)
+        done = self.car.position[0] < -self.x_threshold \
+               or self.car.position[0] > self.x_threshold
+        for angle in [x.angle for x in self.pendulum]:
+        	done  = done \
+                    or angle < -self.theta_threshold_radians \
+                    or angle > self.theta_threshold_radians
+        if done:
+            self.reset()
 
     def Step(self, settings):
         # TODO 1. use DRL to control our car
@@ -80,12 +119,10 @@ class InvertedPendulum(Framework):
         # TODO Step1 get position get angle
         # TODO postion - > algorithm (dqn pid) -> +1 -1
         # if 1
-        f = self.car.GetWorldVector(localVector=(-12000.0, 0))
-        p = self.car.GetWorldPoint(localPoint=(3, 0))
-        self.car.ApplyForce(f, p, True)
+        action = 
+        self.Force(action)
 
         Framework.Step(self, settings)
-        
         done = self.car.position[0] < -self.x_threshold \
                or self.car.position[0] > self.x_threshold
         for angle in [x.angle for x in self.pendulum]:
