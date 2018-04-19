@@ -39,7 +39,7 @@ for i in range(60):
     world.ClearForces()
 
     # Now print the position and angle of the body.
-    print(body.position, body.angle, body.getLinearVelocity)
+    print(body.position, body.angle, body.angularVelocity,body.linearVelocity)
 
 
 # You can also work closer to the C++ Box2D library, not using the niceties

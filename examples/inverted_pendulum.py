@@ -1,27 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# C++ version Copyright (c) 2006-2007 Erin Catto http://www.box2d.org
-# Python version Copyright (c) 2010 kne / sirkne at gmail dot com
-#
-# This software is provided 'as-is', without any express or implied
-# warranty.  In no event will the authors be held liable for any damages
-# arising from the use of this software.
-# Permission is granted to anyone to use this software for any purpose,
-# including commercial applications, and to alter it and redistribute it
-# freely, subject to the following restrictions: 
-# 1. The origin of this software must not be misrepresented; you must not
-# claim that you wrote the original software. If you use this software
-# in a product, an acknowledgment in the product documentation would be
-# appreciated but is not required.
-# 2. Altered source versions must be plainly marked as such, and must not be
-# misrepresented as being the original software.
-# 3. This notice may not be removed or altered from any source distribution.
 
 from examples.framework import (Framework, Keys, main)
 from math import sqrt
 from math import pi 
 import numpy as np 
+import tensorflow as tf
 from Box2D import (b2FixtureDef, b2PolygonShape,
                    b2Transform, b2Mul,
                    b2_pi)
@@ -45,6 +29,8 @@ class InvertedPendulum(Framework):
         self.length = 4
         self.volpole = (0.1, self.length)
         self.poscart = (0, 2.01)
+        self.istrain = settings.istrain
+        self.observation_space = ((self.num_of_pendulum + 1) * 2,)
 
         # angle at which this simulation will fail 
         self.theta_threshold_radians = 12 * 3 * pi / 360
@@ -94,19 +80,13 @@ class InvertedPendulum(Framework):
         p = self.car.GetWorldVector(localPoint=self.poscart)
         self.car.ApplyForce(f, p, True)
     
-    def Train(self, settings):
-        
-        action = 
-        state, reward, done, _ = self.Step(settings, action)
-
-    def Step(self, settings, action):
+    def Step(self, action, settings = settings):
         # TODO 1. use DRL to control our car
         # TODO 2. use classic control method
         # TODO Step1 get position get angle
         # TODO postion - > algorithm (dqn pid) -> +1 -1
         # if 1
         self.Force(action)
-
         Framework.Step(self, settings)
         done = self.car.position[0] < -self.x_threshold \
                or self.car.position[0] > self.x_threshold
@@ -114,6 +94,8 @@ class InvertedPendulum(Framework):
         	done  = done \
                     or angle < -self.theta_threshold_radians \
                     or angle > self.theta_threshold_radians
+        state = [self.car.position[0],self.car.linearVelocity[0]]
+        state.extend([f(x) for x in self.pendulum for f in (lambda x:x.angle,lambda x : x.angularVelocity)])
         if done:
             reward = 0.0    
             self.reset()
