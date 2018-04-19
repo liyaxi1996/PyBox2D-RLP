@@ -21,6 +21,7 @@
 from examples.framework import (Framework, Keys, main)
 from math import sqrt
 from math import pi 
+import numpy as np 
 from Box2D import (b2FixtureDef, b2PolygonShape,
                    b2Transform, b2Mul,
                    b2_pi)
@@ -92,15 +93,18 @@ class InvertedPendulum(Framework):
         f = self.car.GetWorldVector(localVector = force)
         p = self.car.GetWorldVector(localPoint=self.poscart)
         self.car.ApplyForce(f, p, True)
-        self.poscart
     
     def Train(self, settings):
+        
+        action = 
+        state, reward, done, _ = self.Step(settings, action)
+
+    def Step(self, settings, action):
         # TODO 1. use DRL to control our car
         # TODO 2. use classic control method
         # TODO Step1 get position get angle
         # TODO postion - > algorithm (dqn pid) -> +1 -1
         # if 1
-        action = 
         self.Force(action)
 
         Framework.Step(self, settings)
@@ -111,26 +115,11 @@ class InvertedPendulum(Framework):
                     or angle < -self.theta_threshold_radians \
                     or angle > self.theta_threshold_radians
         if done:
+            reward = 0.0    
             self.reset()
-
-    def Step(self, settings):
-        # TODO 1. use DRL to control our car
-        # TODO 2. use classic control method
-        # TODO Step1 get position get angle
-        # TODO postion - > algorithm (dqn pid) -> +1 -1
-        # if 1
-        action = 
-        self.Force(action)
-
-        Framework.Step(self, settings)
-        done = self.car.position[0] < -self.x_threshold \
-               or self.car.position[0] > self.x_threshold
-        for angle in [x.angle for x in self.pendulum]:
-        	done  = done \
-                    or angle < -self.theta_threshold_radians \
-                    or angle > self.theta_threshold_radians
-        if done:
-            self.reset()
+        else:
+            reward = 1.0 
+        return np.array(), reward, done, {}
 
 if __name__ == "__main__":
     main(InvertedPendulum)
