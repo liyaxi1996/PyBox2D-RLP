@@ -78,12 +78,13 @@ class InvertedPendulum(Framework):
         return np.array(state)
     
     def Force(self, action):
-        force = (self.force_mag if action = 1 else -self.force_mag, 0 )
+
+        force = (self.force_mag if action == 1 else -self.force_mag, 0 )
         f = self.car.GetWorldVector(localVector = force)
         p = self.car.GetWorldVector(localPoint=self.poscart)
         self.car.ApplyForce(f, p, True)
     
-    def Step(self, action, settings = settings):
+    def Step(self, action, settings=settings):
         # TODO 1. use DRL to control our car
         # TODO 2. use classic control method
         # TODO Step1 get position get angle

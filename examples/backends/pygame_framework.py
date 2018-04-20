@@ -46,6 +46,13 @@ import tensorflow as tf
 import zipfile
 import cloudpickle
 import numpy as np
+from .deepq import models
+import .deepq.common.tf_util as U
+from .deepq import logger
+from .deepq import LinearSchedule
+from .deepq.replay_buffer import ReplayBuffer, PrioritizedReplayBuffer
+from .deepq.utils import BatchInput, load_state, save_state
+import .deepq.build_graph as deepq
 
 try:
     import pygame_sdl2
@@ -387,10 +394,15 @@ class PygameFramework(FrameworkBase):
         self.world.destructionListener = None
         self.world.renderer = None
     
+    def callback(lcl, _glb):
+        # stop training if reward exceeds 199
+        is_solved = lcl['t'] > 100 and sum(lcl['episode_rewards'][-101:-1]) / 100 >= 199
+        return is_solved
+
     def train(self,
-          q_func,
-          lr=5e-4,
-          max_timesteps=100000,
+          q_func = models.mlp([64]),
+          lr=1e-3,
+          max_timesteps=10000000,
           buffer_size=50000,
           exploration_fraction=0.1,
           exploration_final_eps=0.02,
@@ -407,7 +419,7 @@ class PygameFramework(FrameworkBase):
           prioritized_replay_beta_iters=None,
           prioritized_replay_eps=1e-6,
           param_noise=False,
-          callback=None):
+          callback=callback):
        """Train a deepq model.
 
         Parameters

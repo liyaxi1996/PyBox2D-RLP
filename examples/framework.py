@@ -527,7 +527,6 @@ def main(test_class):
     test = test_class()
     if fwSettings.onlyInit:
         return
-    print(fwSettings.istrain)
     if fwSettings.istrain:
         test.train()
     else:
