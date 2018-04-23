@@ -5,12 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/pybox2d.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pybox2d.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/actwrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/actwrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/backends/pygame_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/backends/pygame_framework.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/deepq/build_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/deepq/build_graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/deepq/replay_buffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/deepq/replay_buffer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/framework.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/inverted_pendulum.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/inverted_pendulum.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +22,8 @@
       <file leaf-file-name="inverted_pendulum.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/inverted_pendulum.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2068">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="668">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
               <folding>
                 <element signature="e#47#101#0" expanded="true" />
               </folding>
@@ -39,8 +34,8 @@
       <file leaf-file-name="framework.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11550">
-              <caret line="532" selection-start-line="532" selection-end-line="532" />
+            <state relative-caret-position="-1">
+              <caret line="400" column="33" selection-start-line="400" selection-start-column="33" selection-end-line="400" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -48,11 +43,8 @@
       <file leaf-file-name="pygame_framework.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/backends/pygame_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="365" selection-start-line="365" selection-end-line="365" />
-              <folding>
-                <element signature="e#1370#1436#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="235">
+              <caret line="423" column="34" lean-forward="true" selection-start-line="423" selection-start-column="34" selection-end-line="423" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -62,6 +54,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Framework</find>
+      <find>load</find>
+      <find>run</find>
+      <find>step</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,10 +80,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="214" />
-    <option name="y" value="382" />
-    <option name="width" value="1855" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="651" />
+    <option name="y" value="273" />
+    <option name="width" value="1856" />
     <option name="height" value="1032" />
   </component>
   <component name="ProjectView">
@@ -96,6 +91,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,12 +108,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/final/baselines" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -174,16 +169,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="214" y="382" width="1855" height="1032" extended-state="0" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" x="0" y="0" width="273" height="495" id="Documentation" side_tool="true" visible="true" weight="0.0015612802" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="7" visible="true" weight="0.32874355" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25067386" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23887588" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -194,9 +191,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,12 +204,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/examples/inverted_pendulum.py</url>
-          <line>104</line>
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager>
@@ -231,6 +222,30 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/examples/inverted_pendulum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1786">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+          <folding>
+            <element signature="e#47#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9975">
+          <caret line="532" selection-start-line="532" selection-end-line="532" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/backends/pygame_framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6707">
+          <caret line="365" selection-start-line="365" selection-end-line="365" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/inverted_pendulum.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2068">
@@ -252,9 +267,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10450">
           <caret line="476" selection-start-line="476" selection-end-line="476" />
-          <folding>
-            <element signature="e#1370#1436#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -279,9 +291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding>
-            <element signature="e#1370#1436#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -292,30 +301,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/framework.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11550">
-          <caret line="532" selection-start-line="532" selection-end-line="532" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/inverted_pendulum.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2068">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="668">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
           <folding>
             <element signature="e#47#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/examples/framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="400" column="33" selection-start-line="400" selection-start-column="33" selection-end-line="400" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/backends/pygame_framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="365" selection-start-line="365" selection-end-line="365" />
-          <folding>
-            <element signature="e#1370#1436#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="235">
+          <caret line="423" column="34" lean-forward="true" selection-start-line="423" selection-start-column="34" selection-end-line="423" selection-end-column="34" />
         </state>
       </provider>
     </entry>

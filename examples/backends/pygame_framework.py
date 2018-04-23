@@ -403,6 +403,27 @@ class PygameFramework(FrameworkBase):
         is_solved = lcl['t'] > 100 and sum(lcl['episode_rewards'][-101:-1]) / 100 >= 199
         return is_solved
 
+    def load(self,path):
+        return ActWrapper.load(path)
+
+    def inference(self, path):
+        act = self.load(path)
+        self.GUIInit()
+        running = True
+        while running:
+            running = self.checkEvents()
+            self.screen.fill((0, 0, 0))
+            self.CheckKeys()
+            episode_rew = 0
+            obs, done = self.Reset(), False
+            while not done:
+                obs, rew, done, _ = self.Step(act(obs[None])[0])
+                episode_rew += rew
+            self.GUIUpdate()
+        self.world.contactListener = None
+        self.world.destructionListener = None
+        self.world.renderer = None
+
     def train(self,
         q_func = models.mlp([64]),
         lr=1e-3,
