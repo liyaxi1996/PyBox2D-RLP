@@ -581,7 +581,7 @@ class PygameFramework(FrameworkBase):
                 if print_freq is not None:
                     logger.log("Restored model with mean reward: {}".format(saved_mean_reward))
                 load_state(model_file)
-
+        act.save("inverted_pendulum_model.pkl")
         self.world.contactListener = None
         self.world.destructionListener = None
         self.world.renderer = None

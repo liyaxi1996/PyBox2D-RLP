@@ -409,7 +409,7 @@ class FrameworkBase(b2ContactListener):
                 self.Print(s, (127, 255, 127))
 
         # Do the main physics step
-        self.Step(self.settings)
+        self.Step(settings = self.settings)
     
     def PrintText(self):
         """
@@ -529,9 +529,10 @@ def main(test_class):
         return
     if fwSettings.istrain:
         test.train()
+    elif fwSettings.isinference:
+        test.inference(fwSettings.path)
     else:
-        test.train()
-        #test.run()
+        test.run()
 
 
 if __name__ == '__main__':

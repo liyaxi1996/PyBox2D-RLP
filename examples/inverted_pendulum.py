@@ -20,7 +20,7 @@ class InvertedPendulum(Framework):
         
         # basic info of the InvertedPendulum world
         self.world.gravity = (0.0, -9.8)
-        self.num_of_pendulum = 2
+        self.num_of_pendulum = 1
         self.action_space = 2 # left and right 
         self.force_mag = 10.0
         self.masscart = 1.0
@@ -71,7 +71,6 @@ class InvertedPendulum(Framework):
             self.world.DestroyBody(pendulum)
 
     def Reset(self):
-        #print('.....')
         self.DestoryInvertedPendulum()
         self.CreateInvertedPendulum()
         state = [self.car.position[0],self.car.linearVelocity[0]]
@@ -84,9 +83,10 @@ class InvertedPendulum(Framework):
         p = self.car.GetWorldPoint(localPoint=self.force_pos)
         self.car.ApplyForce(f, p, True)
     
-    def Step(self, action, settings = None):
+    def Step(self, action = None, settings = None):
         settings = self.settings
-        self.Force(action)
+        if action:
+            self.Force(action)
         Framework.Step(self, settings)
         done = self.car.position[0] < -self.x_threshold \
                or self.car.position[0] > self.x_threshold

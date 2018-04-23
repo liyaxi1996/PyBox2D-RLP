@@ -24,7 +24,9 @@
 class fwSettings(object):
     # The default backend to use in (can be: pyglet, pygame, etc.)
     backend = 'pygame'
+    path = 'inverted_pendulum_model.pkl'
     istrain = False
+    isinference = False
     # Physics options
     hz = 60.0
     velocityIterations = 8
