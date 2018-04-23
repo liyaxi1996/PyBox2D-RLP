@@ -39,16 +39,16 @@ from __future__ import (print_function, absolute_import, division)
 import os
 os.chdir('/home/yin/yxli/pybox2d/examples')
 from deepq import models
-import deepq.tf_util as U
+import deepq.common.tf_util as U
 from deepq import logger
-from deepq.schedules import LinearSchedule
+from deepq import LinearSchedule
 from deepq.replay_buffer import ReplayBuffer, PrioritizedReplayBuffer
 from deepq.utils import BatchInput, load_state, save_state
 import deepq.build_graph as deepq
-from deepq.actwrapper import ActWrapper
 os.chdir('/home/yin/yxli/pybox2d/examples/backends')
 import sys
 import warnings
+from .actwrapper import ActWrapper
 import os
 import tempfile
 
@@ -404,27 +404,91 @@ class PygameFramework(FrameworkBase):
         return is_solved
 
     def train(self,
-        q_func = models.mlp([64]),
-        lr=1e-3,
-        max_timesteps=10000000,
-        buffer_size=50000,
-        exploration_fraction=0.1,
-        exploration_final_eps=0.02,
-        train_freq=1,
-        batch_size=32,
-        print_freq=10,
-        checkpoint_freq=10000,
-        learning_starts=1000,
-        gamma=1.0,
-        target_network_update_freq=500,
-        prioritized_replay=False,
-        prioritized_replay_alpha=0.6,
-        prioritized_replay_beta0=0.4,
-        prioritized_replay_beta_iters=None,
-        prioritized_replay_eps=1e-6,
-        param_noise=False,
-        callback=callback):
-     
+          q_func = models.mlp([64]),
+          lr=1e-3,
+          max_timesteps=10000000,
+          buffer_size=50000,
+          exploration_fraction=0.1,
+          exploration_final_eps=0.02,
+          train_freq=1,
+          batch_size=32,
+          print_freq=100,
+          checkpoint_freq=10000,
+          learning_starts=1000,
+          gamma=1.0,
+          target_network_update_freq=500,
+          prioritized_replay=False,
+          prioritized_replay_alpha=0.6,
+          prioritized_replay_beta0=0.4,
+          prioritized_replay_beta_iters=None,
+          prioritized_replay_eps=1e-6,
+          param_noise=False,
+          callback=callback):
+       """Train a deepq model.
+
+        Parameters
+        -------
+        env: gym.Env
+            environment to train on
+        q_func: (tf.Variable, int, str, bool) -> tf.Variable
+            the model that takes the following inputs:
+                observation_in: object
+                    the output of observation placeholder
+                num_actions: int
+                    number of actions
+                scope: str
+                reuse: bool
+                    should be passed to outer variable scope
+            and returns a tensor of shape (batch_size, num_actions) with values of every action.
+        lr: float
+            learning rate for adam optimizer
+        max_timesteps: int
+            number of env steps to optimizer for
+        buffer_size: int
+            size of the replay buffer
+        exploration_fraction: float
+            fraction of entire training period over which the exploration rate is annealed
+        exploration_final_eps: float
+            final value of random action probability
+        train_freq: int
+            update the model every `train_freq` steps.
+            set to None to disable printing
+        batch_size: int
+            size of a batched sampled from replay buffer for training
+        print_freq: int
+            how often to print out training progress
+            set to None to disable printing
+        checkpoint_freq: int
+            how often to save the model. This is so that the best version is restored
+            at the end of the training. If you do not wish to restore the best version at
+            the end of the training set this variable to None.
+        learning_starts: int
+            how many steps of the model to collect transitions for before learning starts
+        gamma: float
+            discount factor
+        target_network_update_freq: int
+            update the target network every `target_network_update_freq` steps.
+        prioritized_replay: True
+            if True prioritized replay buffer will be used.
+        prioritized_replay_alpha: float
+            alpha parameter for prioritized replay buffer
+        prioritized_replay_beta0: float
+            initial value of beta for prioritized replay buffer
+        prioritized_replay_beta_iters: int
+            number of iterations over which beta will be annealed from initial value
+            to 1.0. If set to None equals to max_timesteps.
+        prioritized_replay_eps: float
+            epsilon to add to the TD errors when updating priorities.
+        callback: (locals, globals) -> None
+            function called at every steps with state of the algorithm.
+            If callback returns true training stops.
+
+        Returns
+        -------
+        act: ActWrapper
+            Wrapper over act function. Adds ability to save it and load it.
+            See header of baselines/deepq/categorical.py for details on the act function.
+        """
 
         self.GUIInit()
         sess = tf.Session()
@@ -468,7 +532,7 @@ class PygameFramework(FrameworkBase):
 
         episode_rewards = [0.0]
         saved_mean_reward = None
-        obs = self.Reset()
+        obs = env.Reset()
         reset = True
         with tempfile.TemporaryDirectory() as td:
             running = True
@@ -483,7 +547,6 @@ class PygameFramework(FrameworkBase):
                 # Check keys that should be checked every loop (not only on initial
                 # keydown)
                 self.CheckKeys()
-                self.PrintText()
                 if callback is not None:
                     if callback(locals(), globals()):
                         break
@@ -504,9 +567,8 @@ class PygameFramework(FrameworkBase):
                     kwargs['update_param_noise_scale'] = True
                 action = act(np.array(obs)[None], update_eps=update_eps, **kwargs)[0]
                 env_action = action
-                #print(action)
                 reset = False
-                new_obs, rew, done, _ = self.Step(action = env_action)
+                new_obs, rew, done, _ = env.Step(action = env_action)
 
                 self.GUIUpdate()
 
@@ -515,11 +577,11 @@ class PygameFramework(FrameworkBase):
                 obs = new_obs
 
                 episode_rewards[-1] += rew
-                #print (done)
                 if done:
-                    obs = self.Reset()
+                    obs = env.Reset()
                     episode_rewards.append(0.0)
                     reset = True
+
                 if t > learning_starts and t % train_freq == 0:
                     # Minimize the error in Bellman's equation on a batch sampled from replay buffer.
                     if prioritized_replay:

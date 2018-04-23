@@ -29,25 +29,25 @@ class InvertedPendulum(Framework):
         self.length = 4
         self.volpole = (0.1, self.length)
         self.poscart = (0, 2.01)
-        self.istrain = settings.istrain
+        self.istrain = self.settings.istrain
         self.observation_space = ((self.num_of_pendulum + 1) * 2,)
-
+        self.force_pos = (3,0)
+        self.friction = 0 
         # angle at which this simulation will fail 
-        self.theta_threshold_radians = 12 * 3 * pi / 360
+        self.theta_threshold_radians = 12 * 2 * pi / 360
         self.x_threshold = 50
 
         # The boundaries
-        ground = self.world.CreateBody(position=(0, 0), shapes=b2PolygonShape(box=(50, 0.01)),) 
-
+        ground = self.world.CreateBody(position=(0, 0), shapes=b2PolygonShape(box=(50, 0.01)), shapeFixture = b2FixtureDef(friction = self.friction))
         self.car = None
         self.pendulum = []
         self.CreateInvertedPendulum()
-
+        
     def CreateInvertedPendulum(self):
         self.car = self.world.CreateDynamicBody(
             position= self.poscart,
             shapes=b2PolygonShape(box=self.volcart),
-            shapeFixture=b2FixtureDef(density=self.masscart),
+            shapeFixture=b2FixtureDef(density=self.masscart,friction = self.friction),
         )
         self.pendulum = []
         for i in range(self.num_of_pendulum):
@@ -71,6 +71,7 @@ class InvertedPendulum(Framework):
             self.world.DestroyBody(pendulum)
 
     def Reset(self):
+        #print('.....')
         self.DestoryInvertedPendulum()
         self.CreateInvertedPendulum()
         state = [self.car.position[0],self.car.linearVelocity[0]]
@@ -78,31 +79,24 @@ class InvertedPendulum(Framework):
         return np.array(state)
     
     def Force(self, action):
-
         force = (self.force_mag if action == 1 else -self.force_mag, 0 )
         f = self.car.GetWorldVector(localVector = force)
-        p = self.car.GetWorldVector(localPoint=self.poscart)
+        p = self.car.GetWorldPoint(localPoint=self.force_pos)
         self.car.ApplyForce(f, p, True)
     
-    def Step(self, action, settings=settings):
-        # TODO 1. use DRL to control our car
-        # TODO 2. use classic control method
-        # TODO Step1 get position get angle
-        # TODO postion - > algorithm (dqn pid) -> +1 -1
-        # if 1
+    def Step(self, action, settings = None):
+        settings = self.settings
         self.Force(action)
         Framework.Step(self, settings)
         done = self.car.position[0] < -self.x_threshold \
                or self.car.position[0] > self.x_threshold
         for angle in [x.angle for x in self.pendulum]:
-        	done  = done \
-                    or angle < -self.theta_threshold_radians \
-                    or angle > self.theta_threshold_radians
+        	done  = done or angle < -self.theta_threshold_radians or angle > self.theta_threshold_radians
         state = [self.car.position[0],self.car.linearVelocity[0]]
         state.extend([f(x) for x in self.pendulum for f in (lambda x:x.angle,lambda x : x.angularVelocity)])
+        done = bool(done)
         if done:
-            reward = 0.0    
-            self.reset()
+            reward = 0.0 
         else:
             reward = 1.0 
         return np.array(state), reward, done, {}

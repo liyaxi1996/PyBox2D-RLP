@@ -530,7 +530,8 @@ def main(test_class):
     if fwSettings.istrain:
         test.train()
     else:
-        test.run()
+        test.train()
+        #test.run()
 
 
 if __name__ == '__main__':
