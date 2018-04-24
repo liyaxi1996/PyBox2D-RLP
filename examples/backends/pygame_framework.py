@@ -411,15 +411,16 @@ class PygameFramework(FrameworkBase):
         self.GUIInit()
         running = True
         while running:
-            running = self.checkEvents()
-            self.screen.fill((0, 0, 0))
-            self.CheckKeys()
             episode_rew = 0
             obs, done = self.Reset(), False
-            while not done:
+            while not done and running:
+                running = self.checkEvents()
+                self.screen.fill((0, 0, 0))
+                self.CheckKeys()
+                self.PrintText()
                 obs, rew, done, _ = self.Step(act(obs[None])[0])
                 episode_rew += rew
-            self.GUIUpdate()
+                self.GUIUpdate()
         self.world.contactListener = None
         self.world.destructionListener = None
         self.world.renderer = None
@@ -445,7 +446,6 @@ class PygameFramework(FrameworkBase):
         prioritized_replay_eps=1e-6,
         param_noise=False,
         callback=callback):
-     
 
         self.GUIInit()
         sess = tf.Session()

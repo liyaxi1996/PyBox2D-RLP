@@ -24,11 +24,11 @@
 class fwSettings(object):
     # The default backend to use in (can be: pyglet, pygame, etc.)
     backend = 'pygame'
-    path = 'inverted_pendulum_model.pkl'
+    path = 'cartpole_model.pkl'
     istrain = False
     isinference = False
     # Physics options
-    hz = 60.0
+    hz = 50.0
     velocityIterations = 8
     positionIterations = 3
     # Makes physics results more accurate (see Box2D wiki)
