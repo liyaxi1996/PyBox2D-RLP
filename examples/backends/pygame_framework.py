@@ -37,16 +37,16 @@ Mouse:
 
 from __future__ import (print_function, absolute_import, division)
 import os
-os.chdir('/home/yin/yxli/pybox2d/examples')
+os.chdir('/home/x/Desktop/pybox2d/examples')
 from deepq import models
 import deepq.tf_util as U
 from deepq import logger
 from deepq.schedules import LinearSchedule
 from deepq.replay_buffer import ReplayBuffer, PrioritizedReplayBuffer
 from deepq.utils import BatchInput, load_state, save_state
-import deepq.build_graph as deepq
+import deepq.build_graph as dqn
 from deepq.actwrapper import ActWrapper
-os.chdir('/home/yin/yxli/pybox2d/examples/backends')
+os.chdir('/home/x/Desktop/pybox2d/examples/backends')
 import sys
 import warnings
 import os
@@ -397,11 +397,6 @@ class PygameFramework(FrameworkBase):
         self.world.contactListener = None
         self.world.destructionListener = None
         self.world.renderer = None
-    
-    def callback(lcl, _glb):
-        # stop training if reward exceeds 199
-        is_solved = lcl['t'] > 100 and sum(lcl['episode_rewards'][-101:-1]) / 100 >= 199
-        return is_solved
 
     def load(self,path):
         return ActWrapper.load(path)
@@ -425,6 +420,13 @@ class PygameFramework(FrameworkBase):
         self.world.destructionListener = None
         self.world.renderer = None
 
+    @staticmethod
+    def callback(lcl, _glb):
+        # stop training if reward exceeds 199
+        is_solved = lcl['t'] > 100 and sum(lcl['episode_rewards'][-101:-1]) / 100 >= 199
+        print(is_solved)
+        return is_solved
+
     def train(self,
         q_func = models.mlp([64]),
         lr=1e-3,
@@ -445,15 +447,16 @@ class PygameFramework(FrameworkBase):
         prioritized_replay_beta_iters=None,
         prioritized_replay_eps=1e-6,
         param_noise=False,
-        callback=callback):
+        callback= None):
 
-        self.GUIInit()
+        callback = self.callback
+        self.GUIInit(   )
         sess = tf.Session()
         sess.__enter__()
         observation_space_shape = self.observation_space
         def make_obs_ph(name):
             return BatchInput(observation_space_shape, name=name)
-        act, train, update_target, debug = deepq.build_train(
+        act, train, update_target, debug = dqn.build_train(
             make_obs_ph=make_obs_ph,
             q_func=q_func,
             num_actions=self.action_space,
@@ -495,6 +498,7 @@ class PygameFramework(FrameworkBase):
             running = True
             model_saved = False
             model_file = os.path.join(td, "model")
+            lyx = 0
             for t in range(max_timesteps):
                 running = self.checkEvents()
                 if not running:
@@ -519,7 +523,7 @@ class PygameFramework(FrameworkBase):
                     # policy is comparable to eps-greedy exploration with eps = exploration.value(t).
                     # See Appendix C.1 in Parameter Space Noise for Exploration, Plappert et al., 2017
                     # for detailed explanation.
-                    update_param_noise_threshold = -np.log(1. - exploration.value(t) + exploration.value(t) / float(env.action_space.n))
+                    update_param_noise_threshold = -np.log(1. - exploration.value(t) + exploration.value(t) / float(self.action_space.n))
                     kwargs['reset'] = reset
                     kwargs['update_param_noise_threshold'] = update_param_noise_threshold
                     kwargs['update_param_noise_scale'] = True
@@ -527,7 +531,7 @@ class PygameFramework(FrameworkBase):
                 env_action = action
                 #print(action)
                 reset = False
-                new_obs, rew, done, _ = self.Step(action = env_action)
+                new_obs, rew, done, _ = self.Step(env_action)
 
                 self.GUIUpdate()
 
@@ -577,6 +581,7 @@ class PygameFramework(FrameworkBase):
                         save_state(model_file)
                         model_saved = True
                         saved_mean_reward = mean_100ep_reward
+                lyx = t
             if model_saved:
                 if print_freq is not None:
                     logger.log("Restored model with mean reward: {}".format(saved_mean_reward))

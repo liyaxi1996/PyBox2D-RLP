@@ -4,7 +4,6 @@ import tempfile
 import tensorflow as tf
 import zipfile
 import cloudpickle
-import numpy as np
 from deepq.build_graph import build_act
 from deepq.utils import load_state, save_state
 

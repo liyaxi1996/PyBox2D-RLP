@@ -409,7 +409,7 @@ class FrameworkBase(b2ContactListener):
                 self.Print(s, (127, 255, 127))
 
         # Do the main physics step
-        self.Step(settings = self.settings)
+        self.Step()
     
     def PrintText(self):
         """

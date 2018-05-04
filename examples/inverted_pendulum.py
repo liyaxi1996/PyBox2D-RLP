@@ -34,6 +34,7 @@ class InvertedPendulum(Framework):
         self.car = None
         self.pendulum = []
         self.CreateInvertedPendulum()
+        self.count = {0:0,1:0}
         
     def CreateInvertedPendulum(self):
         self.car = self.world.CreateDynamicBody(
@@ -79,9 +80,10 @@ class InvertedPendulum(Framework):
         state.extend([f(x) for x in self.pendulum for f in (lambda x: x.angle, lambda x: x.angularVelocity)])
         return state
 
-    def Step(self, action = 1, settings = None):
+    def Step(self, action):
         settings = self.settings
-        if action:
+        self.count[action] += 1
+        if (settings.istrain or settings.isinference):
             self.Force(action)
         Framework.Step(self, settings)
         done = self.car.position[0] < -self.x_threshold \

@@ -24,7 +24,7 @@
 class fwSettings(object):
     # The default backend to use in (can be: pyglet, pygame, etc.)
     backend = 'pygame'
-    path = 'cartpole_model.pkl'
+    path = '/home/x/Desktop/pybox2d/examples/backends/inverted_pendulum_model.pkl'
     istrain = False
     isinference = False
     # Physics options
