@@ -424,7 +424,7 @@ class PygameFramework(FrameworkBase):
     def callback(lcl, _glb):
         # stop training if reward exceeds 199
         is_solved = lcl['t'] > 100 and sum(lcl['episode_rewards'][-101:-1]) / 100 >= 199
-        print(is_solved)
+        #print(is_solved)
         return is_solved
 
     def train(self,
@@ -436,7 +436,7 @@ class PygameFramework(FrameworkBase):
         exploration_final_eps=0.02,
         train_freq=1,
         batch_size=32,
-        print_freq=10,
+        print_freq=100,
         checkpoint_freq=10000,
         learning_starts=1000,
         gamma=1.0,
@@ -450,7 +450,7 @@ class PygameFramework(FrameworkBase):
         callback= None):
 
         callback = self.callback
-        self.GUIInit(   )
+        #self.GUIInit()
         sess = tf.Session()
         sess.__enter__()
         observation_space_shape = self.observation_space
@@ -494,21 +494,21 @@ class PygameFramework(FrameworkBase):
         saved_mean_reward = None
         obs = self.Reset()
         reset = True
+        self.count = {0:0,1:0}
         with tempfile.TemporaryDirectory() as td:
             running = True
             model_saved = False
             model_file = os.path.join(td, "model")
-            lyx = 0
             for t in range(max_timesteps):
                 running = self.checkEvents()
                 if not running:
                     break 
-                self.screen.fill((0, 0, 0))
+                #self.screen.fill((0, 0, 0))
 
                 # Check keys that should be checked every loop (not only on initial
                 # keydown)
                 self.CheckKeys()
-                self.PrintText()
+                #self.PrintText()
                 if callback is not None:
                     if callback(locals(), globals()):
                         break
@@ -529,11 +529,12 @@ class PygameFramework(FrameworkBase):
                     kwargs['update_param_noise_scale'] = True
                 action = act(np.array(obs)[None], update_eps=update_eps, **kwargs)[0]
                 env_action = action
+                self.count[action] += 1
                 #print(action)
                 reset = False
                 new_obs, rew, done, _ = self.Step(env_action)
 
-                self.GUIUpdate()
+                #self.GUIUpdate()
 
                 # Store transition in the replay buffer.
                 replay_buffer.add(obs, action, rew, new_obs, float(done))
@@ -571,6 +572,7 @@ class PygameFramework(FrameworkBase):
                     logger.record_tabular("mean 100 episode reward", mean_100ep_reward)
                     logger.record_tabular("% time spent exploring", int(100 * exploration.value(t)))
                     logger.dump_tabular()
+                    print(self.count)
                 
                 if (checkpoint_freq is not None and t > learning_starts and
                         num_episodes > 100 and t % checkpoint_freq == 0):
@@ -581,7 +583,6 @@ class PygameFramework(FrameworkBase):
                         save_state(model_file)
                         model_saved = True
                         saved_mean_reward = mean_100ep_reward
-                lyx = t
             if model_saved:
                 if print_freq is not None:
                     logger.log("Restored model with mean reward: {}".format(saved_mean_reward))

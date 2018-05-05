@@ -29,6 +29,7 @@ from Box2D import (b2Fixture, b2FixtureDef, b2Joint)
 from Box2D import (b2GetPointStates, b2QueryCallback, b2Random)
 from Box2D import (b2_addState, b2_dynamicBody, b2_epsilon, b2_persistState)
 from .settings import fwSettings
+from random import randint
 
 
 class fwDestructionListener(b2DestructionListener):
@@ -528,8 +529,10 @@ def main(test_class):
     if fwSettings.onlyInit:
         return
     if fwSettings.istrain:
+        #test.Step(randint(0,1))
         test.train()
     elif fwSettings.isinference:
+        test.Step(randint(0,1))
         test.inference(fwSettings.path)
     else:
         test.run()
