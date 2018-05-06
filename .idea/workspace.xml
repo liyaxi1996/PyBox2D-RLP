@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/backends/inverted_pendulum_model.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/examples/backends/inverted_pendulum_model.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/backends/pygame_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/backends/pygame_framework.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/framework.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/inverted_pendulum.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/inverted_pendulum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/settings.py" afterDir="false" />
     </list>
@@ -17,16 +16,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/pybox2d$web.coverage" NAME="web Coverage Results" MODIFIED="1525528301919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
-    <SUITE FILE_PATH="coverage/pybox2d$inverted_pendulum.coverage" NAME="inverted_pendulum Coverage Results" MODIFIED="1525532120224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/pybox2d$web.coverage" NAME="web Coverage Results" MODIFIED="1525581722135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
+    <SUITE FILE_PATH="coverage/pybox2d$inverted_pendulum.coverage" NAME="inverted_pendulum Coverage Results" MODIFIED="1525590641022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="inverted_pendulum.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/inverted_pendulum.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="111" column="6" lean-forward="true" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+            <state relative-caret-position="1307">
+              <caret line="119" column="7" lean-forward="true" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
               <folding>
                 <element signature="e#47#101#0" expanded="true" />
               </folding>
@@ -34,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="framework.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="framework.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="534" column="8" selection-start-line="534" selection-start-column="8" selection-end-line="534" selection-end-column="8" />
+            <state relative-caret-position="884">
+              <caret line="532" column="14" selection-start-line="532" selection-start-column="14" selection-end-line="532" selection-end-column="14" />
               <folding>
                 <element signature="e#1090#1111#0" expanded="true" />
               </folding>
@@ -49,8 +48,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-512">
-              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+            <state>
+              <caret line="20" column="76" lean-forward="true" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
               <folding>
                 <element signature="n#!!doc" />
               </folding>
@@ -61,7 +60,7 @@
       <file leaf-file-name="random.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/lyx/lib/python3.4/random.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
+            <state relative-caret-position="375">
               <caret line="217" selection-start-line="217" selection-end-line="217" />
             </state>
           </provider>
@@ -70,19 +69,32 @@
       <file leaf-file-name="Box2D.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/lyx/lib/python3.4/site-packages/Box2D/Box2D.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205689">
+            <state relative-caret-position="36">
               <caret line="6497" column="21" selection-start-line="6497" selection-start-column="16" selection-end-line="6497" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pygame_framework.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pygame_framework.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/backends/pygame_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="394" column="21" lean-forward="true" selection-start-line="394" selection-start-column="21" selection-end-line="394" selection-end-column="21" />
+            <state relative-caret-position="190">
+              <caret line="432" column="24" selection-start-line="432" selection-start-column="24" selection-end-line="432" selection-end-column="24" />
               <folding>
                 <element signature="e#1370#1436#0" expanded="true" />
+                <element signature="e#13623#13651#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actwrapper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/deepq/actwrapper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,7 +103,7 @@
       <file leaf-file-name="pygame_gui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/backends/pygame_gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1251">
+            <state>
               <caret line="97" selection-start-line="97" selection-end-line="97" />
             </state>
           </provider>
@@ -101,7 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>se</find>
       <find>ApplyForce</find>
       <find>update_drive</find>
       <find>break</find>
@@ -118,7 +129,7 @@
       <find>print</find>
       <find>print_freq</find>
       <find>self.GUIInit()</find>
-      <find />
+      <find>self.screen.fill((0, 0, 0))</find>
       <find>self.GUIUpdate()</find>
       <find>exploration</find>
       <find>step()</find>
@@ -131,6 +142,7 @@
       <find>force</find>
       <find>train</find>
       <find>Force</find>
+      <find>Step(</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,10 +154,10 @@
         <option value="$PROJECT_DIR$/examples/web.py" />
         <option value="$PROJECT_DIR$/examples/deepq/build_graph.py" />
         <option value="$PROJECT_DIR$/examples/deepq/actwrapper.py" />
-        <option value="$PROJECT_DIR$/examples/backends/pygame_framework.py" />
-        <option value="$PROJECT_DIR$/examples/inverted_pendulum.py" />
-        <option value="$PROJECT_DIR$/examples/settings.py" />
         <option value="$PROJECT_DIR$/examples/framework.py" />
+        <option value="$PROJECT_DIR$/examples/settings.py" />
+        <option value="$PROJECT_DIR$/examples/inverted_pendulum.py" />
+        <option value="$PROJECT_DIR$/examples/backends/pygame_framework.py" />
       </list>
     </option>
   </component>
@@ -159,17 +171,16 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="385" />
-    <option name="y" value="41" />
+    <option name="x" value="1552" />
+    <option name="y" value="58" />
     <option name="width" value="1855" />
-    <option name="height" value="890" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,6 +203,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -199,7 +211,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../baselines" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -228,7 +240,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/inverted_pendulum.py" />
-      <option name="PARAMETERS" value="--istrain" />
+      <option name="PARAMETERS" value="--isinference" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -277,23 +289,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="385" y="41" width="1855" height="890" extended-state="0" />
-    <editor active="true" />
+    <frame x="1552" y="58" width="1855" height="904" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5061995" side_tool="true" visible="true" weight="0.4385965" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5083558" side_tool="true" visible="true" weight="0.20854272" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.0" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49380055" visible="true" weight="0.4385965" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4916442" weight="0.5414573" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23827493" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" sideWeight="0.49973276" weight="0.32876712" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49615893" weight="0.16228288" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4949225" weight="0.42318982" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -302,7 +314,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" weight="0.32921812" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,11 +325,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/examples/backends/pygame_framework.py</url>
-          <line>589</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/examples/backends/pygame_framework.py</url>
           <line>406</line>
@@ -334,13 +340,8 @@
           <line>51</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/examples/backends/pygame_framework.py</url>
-          <line>495</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="33" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -354,6 +355,11 @@
         <watch expression="done" />
         <watch expression="reset" />
         <watch expression="episode_rewards" />
+        <watch expression="self.action_space" />
+        <watch expression="12 * 2 * b2_pi / 360" />
+        <watch expression="self.x_threshold" />
+        <watch expression="self.theta_threshold_radians" />
+        <watch expression="angle" />
       </configuration>
     </watches-manager>
   </component>
@@ -377,6 +383,16 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/examples/framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12098">
+          <caret line="534" column="7" lean-forward="true" selection-start-line="534" selection-start-column="7" selection-end-line="534" selection-end-column="7" />
+          <folding>
+            <element signature="e#1090#1111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/chain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-542" />
@@ -590,19 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/deepq/utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/deepq/actwrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/backends/pyglet_framework.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -624,39 +627,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/backends/pygame_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1251">
+        <state>
           <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/deepq/actwrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/lyx/lib/python3.4/site-packages/Box2D/Box2D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205689">
+        <state relative-caret-position="36">
           <caret line="6497" column="21" selection-start-line="6497" selection-start-column="16" selection-end-line="6497" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/lyx/lib/python3.4/random.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
+        <state relative-caret-position="375">
           <caret line="217" selection-start-line="217" selection-end-line="217" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/backends/pygame_framework.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="394" column="21" lean-forward="true" selection-start-line="394" selection-start-column="21" selection-end-line="394" selection-end-column="21" />
-          <folding>
-            <element signature="e#1370#1436#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-512">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        <state>
+          <caret line="20" column="76" lean-forward="true" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
           <folding>
             <element signature="n#!!doc" />
           </folding>
@@ -665,8 +668,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/inverted_pendulum.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="111" column="6" lean-forward="true" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+        <state relative-caret-position="1307">
+          <caret line="119" column="7" lean-forward="true" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
           <folding>
             <element signature="e#47#101#0" expanded="true" />
           </folding>
@@ -675,10 +678,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="534" column="8" selection-start-line="534" selection-start-column="8" selection-end-line="534" selection-end-column="8" />
+        <state relative-caret-position="884">
+          <caret line="532" column="14" selection-start-line="532" selection-start-column="14" selection-end-line="532" selection-end-column="14" />
           <folding>
             <element signature="e#1090#1111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/backends/pygame_framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="432" column="24" selection-start-line="432" selection-start-column="24" selection-end-line="432" selection-end-column="24" />
+          <folding>
+            <element signature="e#1370#1436#0" expanded="true" />
+            <element signature="e#13623#13651#0" />
           </folding>
         </state>
       </provider>

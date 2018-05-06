@@ -28,9 +28,9 @@ class fwSettings(object):
     istrain = False
     isinference = False
     # Physics options
-    hz = 60.0
-    velocityIterations = 10
-    positionIterations = 10
+    hz = 50.0
+    velocityIterations = 6
+    positionIterations = 2
     # Makes physics results more accurate (see Box2D wiki)
     enableWarmStarting = True
     enableContinuous = True     # Calculate time of impact

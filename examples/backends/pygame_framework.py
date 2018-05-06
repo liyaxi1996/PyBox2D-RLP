@@ -428,15 +428,15 @@ class PygameFramework(FrameworkBase):
         return is_solved
 
     def train(self,
-        q_func = models.mlp([64]),
+        q_func = None,
         lr=1e-3,
-        max_timesteps=10000000,
+        max_timesteps=150000,
         buffer_size=50000,
         exploration_fraction=0.1,
         exploration_final_eps=0.02,
         train_freq=1,
         batch_size=32,
-        print_freq=100,
+        print_freq=10,
         checkpoint_freq=10000,
         learning_starts=1000,
         gamma=1.0,
@@ -449,6 +449,7 @@ class PygameFramework(FrameworkBase):
         param_noise=False,
         callback= None):
 
+        q_func = models.mlp([64])
         callback = self.callback
         #self.GUIInit()
         sess = tf.Session()
